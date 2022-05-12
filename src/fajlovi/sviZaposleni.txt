@@ -1,0 +1,2 @@
+001|Petar|Petrovic|1111111111111|Radiceva 5|1|petarp|1234|55000
+002|Marija|Maric|222222222222||Livadica 8|0|4321|65000

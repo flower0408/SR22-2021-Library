@@ -1,0 +1,2 @@
+001|Drzava|Drzava|Platon|1981|grcki|dobra knjiga
+002|Protagora|Protagora|Platon|2001|grcki|dobar opis

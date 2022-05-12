@@ -10,11 +10,14 @@ public class Knjiga {
 			this.godinaPublikacije = 0;
 			this.jezikOriginala = "";
 			this.opis = "";
+			this.zanr = new ZanrKnjige();
 		}
 	
   
-    public Knjiga(int id, String naslovKnjige, String originalniNaslovKnjige, String pisac, int godinaPublikacije,
-			String jezikOriginala, String opis) {
+ 
+
+	public Knjiga(int id, String naslovKnjige, String originalniNaslovKnjige, String pisac, int godinaPublikacije,
+			String jezikOriginala, String opis, ZanrKnjige zanr) {
 		super();
 		this.id = id;
 		this.naslovKnjige = naslovKnjige;
@@ -23,7 +26,11 @@ public class Knjiga {
 		this.godinaPublikacije = godinaPublikacije;
 		this.jezikOriginala = jezikOriginala;
 		this.opis = opis;
+		this.zanr = zanr;
 	}
+
+
+
 
 	protected int id;
     protected String naslovKnjige;
@@ -32,49 +39,84 @@ public class Knjiga {
     protected int godinaPublikacije;
     protected String jezikOriginala;
     protected String opis;
-    
-    
+    protected ZanrKnjige zanr;
 	public int getId() {
 		return id;
 	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
 	public String getNaslovKnjige() {
 		return naslovKnjige;
 	}
+
+
 	public void setNaslovKnjige(String naslovKnjige) {
 		this.naslovKnjige = naslovKnjige;
 	}
+
+
 	public String getOriginalniNaslovKnjige() {
 		return originalniNaslovKnjige;
 	}
+
+
 	public void setOriginalniNaslovKnjige(String originalniNaslovKnjige) {
 		this.originalniNaslovKnjige = originalniNaslovKnjige;
 	}
+
+
 	public String getPisac() {
 		return pisac;
 	}
+
+
 	public void setPisac(String pisac) {
 		this.pisac = pisac;
 	}
+
+
 	public int getGodinaPublikacije() {
 		return godinaPublikacije;
 	}
+
+
 	public void setGodinaPublikacije(int godinaPublikacije) {
 		this.godinaPublikacije = godinaPublikacije;
 	}
+
+
 	public String getJezikOriginala() {
 		return jezikOriginala;
 	}
+
+
 	public void setJezikOriginala(String jezikOriginala) {
 		this.jezikOriginala = jezikOriginala;
 	}
+
+
 	public String getOpis() {
 		return opis;
 	}
+
+
 	public void setOpis(String opis) {
 		this.opis = opis;
+	}
+
+
+	public ZanrKnjige getZanr() {
+		return zanr;
+	}
+
+
+	public void setZanr(ZanrKnjige zanr) {
+		this.zanr = zanr;
 	}
 
 
@@ -82,8 +124,9 @@ public class Knjiga {
 	public String toString() {
 		return "Knjiga [id=" + id + ", naslovKnjige=" + naslovKnjige + ", originalniNaslovKnjige="
 				+ originalniNaslovKnjige + ", pisac=" + pisac + ", godinaPublikacije=" + godinaPublikacije
-				+ ", jezikOriginala=" + jezikOriginala + ", opis=" + opis + "]";
+				+ ", jezikOriginala=" + jezikOriginala + ", opis=" + opis + ", zanr=" + zanr + "]";
 	}
-
-
+    
+    
+	
 }

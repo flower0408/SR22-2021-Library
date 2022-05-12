@@ -1,1 +1,2 @@
-002|Protagora|Protagora|Platon|2001|grcki|dobar opis
+001|256|true|1995|engleski|false
+002|412|false|2001|grcki|true

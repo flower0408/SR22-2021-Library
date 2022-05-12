@@ -1,0 +1,2 @@
+001|penzioneri|100
+002|ostali|250

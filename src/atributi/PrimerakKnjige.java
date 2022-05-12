@@ -3,7 +3,7 @@ package atributi;
 public class PrimerakKnjige {
 	
 	public PrimerakKnjige() {
-		this.id = 0;
+		this.id = "";
 		this.brStrana = 0;
 		this.mekPovez = false;
 		this.godinaStampanja = 0;
@@ -14,7 +14,7 @@ public class PrimerakKnjige {
 
 	    
 
-		public PrimerakKnjige(int id, int brStrana, boolean mekPovez, int godinaStampanja, String jezikSatmpanja,
+		public PrimerakKnjige(String id, int brStrana, boolean mekPovez, int godinaStampanja, String jezikSatmpanja,
 			boolean iznajmljena, Knjiga knjiga) {
 		super();
 		this.id = id;
@@ -28,20 +28,21 @@ public class PrimerakKnjige {
 
 
 
-		protected int id;
+		protected String id;
 	    protected int brStrana;
 	    protected boolean mekPovez;
 	    protected int godinaStampanja;
 	    protected String jezikSatmpanja;
 	    protected boolean iznajmljena;
 	    protected Knjiga knjiga;
-		public int getId() {
+	    
+		public String getId() {
 			return id;
 		}
 
 
 
-		public void setId(int id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 

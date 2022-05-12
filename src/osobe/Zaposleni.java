@@ -48,11 +48,10 @@ public class Zaposleni extends Osoba {
 
 	@Override
 	public String toString() {
-		return "ZAPOSLENI " + super.toString() +  
-				"\nKorisnickoIme: " + this.korisnickoIme +
-				"\nKorisnickaSifra: " + this.korisnickaSifra +
-				"\nPlata: " + this.plata;
-		
+		return "Zaposleni [korisnickoIme=" + korisnickoIme + ", korisnickaSifra=" + korisnickaSifra + ", plata=" + plata
+				+ ", id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", JMBG=" + JMBG + ", adresa=" + adresa
+				+ ", pol=" + pol + "]";
 	}
 
+	
 }

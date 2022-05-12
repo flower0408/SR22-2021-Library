@@ -3,7 +3,7 @@ package atributi;
 public class Knjiga {
 	
 	 public Knjiga() {
-			this.id = 0;
+			this.id = "";
 			this.naslovKnjige = "";
 			this.originalniNaslovKnjige = "";
 			this.pisac = "";
@@ -16,7 +16,7 @@ public class Knjiga {
   
  
 
-	public Knjiga(int id, String naslovKnjige, String originalniNaslovKnjige, String pisac, int godinaPublikacije,
+	public Knjiga(String id, String naslovKnjige, String originalniNaslovKnjige, String pisac, int godinaPublikacije,
 			String jezikOriginala, String opis, ZanrKnjige zanr) {
 		super();
 		this.id = id;
@@ -32,7 +32,7 @@ public class Knjiga {
 
 
 
-	protected int id;
+	protected String id;
     protected String naslovKnjige;
     protected String originalniNaslovKnjige;
     protected String pisac;
@@ -40,12 +40,13 @@ public class Knjiga {
     protected String jezikOriginala;
     protected String opis;
     protected ZanrKnjige zanr;
-	public int getId() {
+    
+	public String getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

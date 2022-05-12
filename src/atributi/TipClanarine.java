@@ -3,28 +3,28 @@ package atributi;
 public class TipClanarine {
 	
 	public TipClanarine() {
-		this.id = 0;
+		this.id = "";
 		this.naziv = "";
 		this.cena = 0;
 	}
 	
 	  
 
-	    public TipClanarine(int id, String naziv, double cena) {
+	    public TipClanarine(String id, String naziv, double cena) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
 		this.cena = cena;
 	}
-		protected int id;
+		protected String id;
 	    protected String naziv;
 	    protected double cena;
 	    
 	    
-		public int getId() {
+		public String getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 		public String getNaziv() {

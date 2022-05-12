@@ -80,16 +80,14 @@ public abstract class Osoba {
 
 	@Override
 	public String toString() {
-		return "\nID: " + id
-			 + "\nIme: " + ime
-			 + "\nPrezime: " + prezime
-			 + "\nJMBG: " + JMBG
-			 + "\nAdresa: " + adresa
-			 + "\nPol: " + pol;
-			 
+		return "Osoba [id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", JMBG=" + JMBG + ", adresa=" + adresa
+				+ ", pol=" + pol + "]";
+	}
+
+
 			
 	}
 
     
 
-}
+

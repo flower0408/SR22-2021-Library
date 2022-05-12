@@ -14,7 +14,7 @@ import osobe.ClanBiblioteke;
 public class Biblioteka {
 	
 	public Biblioteka() {
-		this.id = 0;
+		this.id = "";
 		this.naziv = "";
 		this.adresa = "";
 		this.telefon = "";
@@ -34,7 +34,7 @@ public class Biblioteka {
 		
 
 
-		public Biblioteka(int id, String naziv, String adresa, String telefon, String radnoVreme,
+		public Biblioteka(String id, String naziv, String adresa, String telefon, String radnoVreme,
 			ArrayList<Administrator> administratori, ArrayList<Bibliotekar> bibliotekari,
 			ArrayList<ClanBiblioteke> clanoviBiblioteke, ArrayList<IzdavanjeKnjige> izdavanjeKnjiga,
 			ArrayList<TipClanarine> tipoviClanarine, ArrayList<Knjiga> knjige, ArrayList<PrimerakKnjige> primerciKnjiga,
@@ -60,7 +60,7 @@ public class Biblioteka {
 
 
 
-		protected int id;
+		protected String id;
 	    protected String naziv;
 	    protected String adresa;
 	    protected String telefon;
@@ -73,7 +73,8 @@ public class Biblioteka {
 	    protected ArrayList<Knjiga> knjige;
 	    protected ArrayList<PrimerakKnjige> primerciKnjiga;
 	    protected ArrayList<ZanrKnjige> zanroviKnjige;
-		public int getId() {
+	    
+		public String getId() {
 			return id;
 		}
 
@@ -300,7 +301,7 @@ public class Biblioteka {
 
 
 
-		public void setId(int id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 

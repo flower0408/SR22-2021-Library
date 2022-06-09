@@ -17,7 +17,7 @@ public class ClanBiblioteke extends Osoba {
     public ClanBiblioteke() {
 		super();
 		this.brClanskeKarte = "";
-		this.datumPoslednjeUplate = null;
+		this.datumPoslednjeUplate = LocalDate.of(0,0,0);
 		this.brojMeseciClanarine = 0;
 		this.aktivan = false;
 		this.tipClanarine = new TipClanarine();
@@ -25,9 +25,9 @@ public class ClanBiblioteke extends Osoba {
 
 
 
-	public ClanBiblioteke(String brClanskeKarte, LocalDate datumPoslednjeUplate, int brojMeseciClanarine,
+	public ClanBiblioteke(int id, String ime, String prezime, String JMBG, String adresa, EnumPol pol,String brClanskeKarte, LocalDate datumPoslednjeUplate, int brojMeseciClanarine,
 			boolean aktivan, TipClanarine tip) {
-		super();
+		super(id, ime, prezime, JMBG, adresa, pol);
 		this.brClanskeKarte = brClanskeKarte;
 		this.datumPoslednjeUplate = datumPoslednjeUplate;
 		this.brojMeseciClanarine = brojMeseciClanarine;

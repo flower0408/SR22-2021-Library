@@ -1,6 +1,6 @@
 package atributi;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import osobe.ClanBiblioteke;
 import osobe.Zaposleni;
@@ -10,13 +10,13 @@ public class IzdavanjeKnjige {
     
 	public IzdavanjeKnjige() {
 		super();
-		this.datumIznajmljivanja = null;
-		this.datumVracanja = null;
+		this.datumIznajmljivanja = LocalDate.of(0,0,0);
+		this.datumVracanja = LocalDate.of(0,0,0);
 		this.zaposleni = new Zaposleni();
 		this.clan = new ClanBiblioteke();
 		this.primerak = new PrimerakKnjige();
 	}
-	public IzdavanjeKnjige(LocalDateTime datumIznajmljivanja, LocalDateTime datumVracanja, Zaposleni zaposleni,
+	public IzdavanjeKnjige(LocalDate datumIznajmljivanja, LocalDate datumVracanja, Zaposleni zaposleni,
 			ClanBiblioteke clan, PrimerakKnjige primerak) {
 		super();
 		this.datumIznajmljivanja = datumIznajmljivanja;
@@ -25,23 +25,23 @@ public class IzdavanjeKnjige {
 		this.clan = clan;
 		this.primerak = primerak;
 	}
-	protected LocalDateTime datumIznajmljivanja;
-    protected LocalDateTime datumVracanja;
+	protected LocalDate datumIznajmljivanja;
+    protected LocalDate datumVracanja;
     protected Zaposleni zaposleni;
     protected ClanBiblioteke clan;
     protected PrimerakKnjige primerak;
     
     
-	public LocalDateTime getDatumIznajmljivanja() {
+	public LocalDate getDatumIznajmljivanja() {
 		return datumIznajmljivanja;
 	}
-	public void setDatumIznajmljivanja(LocalDateTime datumIznajmljivanja) {
+	public void setDatumIznajmljivanja(LocalDate datumIznajmljivanja) {
 		this.datumIznajmljivanja = datumIznajmljivanja;
 	}
-	public LocalDateTime getDatumVracanja() {
+	public LocalDate getDatumVracanja() {
 		return datumVracanja;
 	}
-	public void setDatumVracanja(LocalDateTime datumVracanja) {
+	public void setDatumVracanja(LocalDate datumVracanja) {
 		this.datumVracanja = datumVracanja;
 	}
 	public Zaposleni getZaposleni() {

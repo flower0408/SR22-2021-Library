@@ -1,2 +1,3 @@
-001|penzioneri|100
-002|ostali|250
+1|penzioneri|100
+2|deca do 14|150
+3|ostali|250

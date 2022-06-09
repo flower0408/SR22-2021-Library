@@ -1,2 +1,2 @@
-SR22|27.02.2021.|2|false
-SR35|11.05.2021.|5|true
+1|Maja|Drazic|15428976652|Ive Andrica 30, Indjija|0|001|2021-12-05|6|true|1
+2|Darko|Lazic|48641684110|Zdravka Celara 54, Beograd|1|002|2022-04-04|10|true|2

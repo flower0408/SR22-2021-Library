@@ -8,6 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import biblioteka.Biblioteka;
+import gui.formeZaPrikaz.AdministratoriProzor;
+import gui.formeZaPrikaz.BibliotekaProzor;
+import gui.formeZaPrikaz.BibliotekariProzor;
+import gui.formeZaPrikaz.ClanoviProzor;
+import gui.formeZaPrikaz.IzdavanjeProzor;
+import gui.formeZaPrikaz.KnjigeProzor;
+import gui.formeZaPrikaz.PrimerciKnjigaProzor;
+import gui.formeZaPrikaz.SpisakZaposlenihProzor;
 import gui.formeZaPrikaz.ZanroviProzor;
 import net.miginfocom.swing.MigLayout;
 import osobe.Zaposleni;
@@ -24,7 +32,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JLabel;
-import gui.formeZaPrikaz.ZanroviProzor;
+
 
 public class GlavniProzor extends JFrame {
 
@@ -83,7 +91,7 @@ public class GlavniProzor extends JFrame {
 			sviZaposleniItem.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					SviZaposleniProzor pp = new SviZaposleniProzor(biblioteka);
+					SpisakZaposlenihProzor pp = new SpisakZaposlenihProzor(biblioteka);
 					pp.setVisible(true);
 				}
 			});
@@ -124,7 +132,7 @@ public class GlavniProzor extends JFrame {
 			zanroviKnjigaItem.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ZanroviProzor kp = new ZanroviProzor(biblioteka);
+					ZanroviProzor kp = new ZanroviProzor();
 					kp.setVisible(true);
 				}
 			});

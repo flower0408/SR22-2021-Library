@@ -4,7 +4,7 @@ package osobe;
 public abstract class Osoba {
 	
 	public Osoba() {
-    	this.id = 0;
+    	this.id = "";
     	this.ime = "";
     	this.prezime = "";
     	this.JMBG = "";
@@ -13,14 +13,14 @@ public abstract class Osoba {
     }
 
 	 
-    protected int id;
+    protected String id;
     protected String ime;
     protected String prezime;
     protected String JMBG;
     protected String adresa;
     protected EnumPol pol;
     
-    public Osoba(int id, String ime, String prezime, String JMBG, String adresa, EnumPol pol) {
+    public Osoba(String id, String ime, String prezime, String JMBG, String adresa, EnumPol pol) {
     	super();
     	this.id = id;
     	this.ime = ime;
@@ -30,13 +30,19 @@ public abstract class Osoba {
     	this.pol = pol;
     }
 
-	public int getId() {
+
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+	public void setId(String id) {
 		this.id = id;
 	}
+
+
 
 	public String getIme() {
 		return ime;

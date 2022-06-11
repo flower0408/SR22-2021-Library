@@ -474,7 +474,7 @@ public class Biblioteka {
 					
 					String[] split = line.split("\\|");
 					
-					int id = Integer.parseInt(split[0]);
+					String id = split[0];
 					String ime = split[1];
 					String prezime = split[2];
 					String JMBG = split[3];
@@ -599,7 +599,7 @@ public class Biblioteka {
 					
 					String[] split = line.split("\\|");
 					
-					int id = Integer.parseInt(split[0]);
+					String id = split[0];
 					String ime = split[1];
 					String prezime = split[2];
 					String JMBG = split[3];
@@ -638,7 +638,7 @@ public class Biblioteka {
 					
 					String[] split = line.split("\\|");
 					
-					int id = Integer.parseInt(split[0]);
+					String id = split[0];
 					String ime = split[1];
 					String prezime = split[2];
 					String JMBG = split[3];
@@ -717,7 +717,7 @@ public class Biblioteka {
 					
 					String[] split = line.split("\\|");
 					
-					int id = Integer.parseInt(split[0]);
+					String id = split[0];
 					String ime = split[1];
 					String prezime = split[2];
 					String JMBG = split[3];
@@ -786,7 +786,7 @@ public class Biblioteka {
 
 		public ClanBiblioteke pronadjiClana(int id) {
 			for (ClanBiblioteke clan : clanoviBiblioteke) {
-				if(clan.getId() == id) {
+				if(clan.getId().equals(id)) {
 					return clan;
 				}
 			}
@@ -796,9 +796,9 @@ public class Biblioteka {
 
 
 
-		public Administrator pronadjiAdministartora(int id) {
+		public Administrator pronadjiAdministartora(String administratorId) {
 			for (Administrator sviadministartori : administratori) {
-				if(sviadministartori.getId() == id) {
+				if(sviadministartori.getId().equals(administratorId)) {
 					return sviadministartori;
 				}
 			}
@@ -807,7 +807,7 @@ public class Biblioteka {
 		
 		public Bibliotekar pronadjiBibliotekara(int id) {
 			for (Bibliotekar svibibliotekari : bibliotekari) {
-				if(svibibliotekari.getId() == id) {
+				if(svibibliotekari.getId().equals(id)) {
 					return svibibliotekari;
 				}
 			}
@@ -825,7 +825,7 @@ public class Biblioteka {
 		
 		public Zaposleni pronadjiZaposlenog(int id) {
 			for (Zaposleni zaposlenI : sviZaposleni) {
-				if(zaposlenI.getId() == id) {
+				if(zaposlenI.getId().equals(id)) {
 					return zaposlenI;
 				}
 			}

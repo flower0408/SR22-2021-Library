@@ -19,7 +19,7 @@ public class Zaposleni extends Osoba {
     protected boolean obrisan;
     protected EnumZaposleni zaposleni;
     
-    public Zaposleni(int id, String ime, String prezime, String JMBG, String adresa, EnumPol pol, String korisnickoIme, String korisnickaSifra, double plata, boolean obrisan, EnumZaposleni zaposleni) {
+    public Zaposleni(String id, String ime, String prezime, String JMBG, String adresa, EnumPol pol, String korisnickoIme, String korisnickaSifra, double plata, boolean obrisan, EnumZaposleni zaposleni) {
 		super(id, ime, prezime, JMBG, adresa, pol);
 		this.korisnickoIme = korisnickoIme;
 		this.korisnickaSifra = korisnickaSifra;

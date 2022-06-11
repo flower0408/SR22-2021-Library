@@ -7,7 +7,7 @@ public class Administrator extends Zaposleni{
 			}
 	
 
-	public Administrator(int id, String ime, String prezime, String JMBG, String adresa, EnumPol pol,
+	public Administrator(String id, String ime, String prezime, String JMBG, String adresa, EnumPol pol,
 			String korisnickoIme, String korisnickaSifra, double plata, boolean obrisan, EnumZaposleni zaposleni) {
 		super(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata, obrisan, zaposleni);
 			}

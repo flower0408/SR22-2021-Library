@@ -27,7 +27,7 @@ public class ClanBiblioteke extends Osoba {
 
 
 
-	public ClanBiblioteke(int id, String ime, String prezime, String JMBG, String adresa, EnumPol pol,String brClanskeKarte, LocalDate datumPoslednjeUplate, int brojMeseciClanarine,
+	public ClanBiblioteke(String id, String ime, String prezime, String JMBG, String adresa, EnumPol pol,String brClanskeKarte, LocalDate datumPoslednjeUplate, int brojMeseciClanarine,
 			boolean aktivan, TipClanarine tip, boolean obrisan) {
 		super(id, ime, prezime, JMBG, adresa, pol);
 		this.brClanskeKarte = brClanskeKarte;

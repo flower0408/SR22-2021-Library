@@ -7,7 +7,7 @@ import atributi.PrimerakKnjige;
 import atributi.TipClanarine;
 import atributi.ZanrKnjige;
 import biblioteka.Biblioteka;
-
+import gui.LoginProzor;
 import osobe.ClanBiblioteke;
 import osobe.EnumPol;
 import osobe.Zaposleni;
@@ -19,7 +19,7 @@ public class BibliotekaMain {
 	
 	
 	private static String KNJIGE_FAJL = "knjige.txt";
-	private static String ZANROVI_FAJL = "zanroviKnjige.txt";
+	public static String ZANROVI_FAJL = "zanroviKnjige.txt";
 	private static String CLANOVI_FAJL = "clanoviBiblioteke.txt";
 	private static String PRIMERCIKNJIGA_FAJL = "primerciKnjiga.txt";
 	private static String TIPOVICLANARINE_FAJL = "tipoviClanarine.txt";
@@ -47,22 +47,26 @@ public static void main(String[] args) {
 	biblioteka.ucitajZaposlene(ZAPOSLENI_FAJL);
 	
 	
-	System.out.println("PODACI UCITANI IZ DATOTEKA:");
-	System.out.println("----------------------------------------------");
-	ispisiSvePodatke(biblioteka);
-	System.out.println("----------------------------------------------");
+	LoginProzor lp = new LoginProzor(biblioteka);
+	lp.setVisible(true);
+	
+	
+	//System.out.println("PODACI UCITANI IZ DATOTEKA:");
+	//System.out.println("----------------------------------------------");
+	//ispisiSvePodatke(biblioteka);
+	//System.out.println("----------------------------------------------");
 	
 	
 	
 	
 	
-	System.out.println("Dodavanje test podataka: ");
+	//System.out.println("Dodavanje test podataka: ");
 	
 	
-	//ClanBiblioteke testClan = new ClanBiblioteke(5,"Marko","Peric","6551546542","test adresa",EnumPol.ZENSKI,"006", LocalDate.of(2022, 02, 19), 24, true, biblioteka.pronadjiTipClanarine(2));
+	//ClanBiblioteke testClan = new ClanBiblioteke(5,"Marko","Peric","6551546542","test adresa",EnumPol.ZENSKI,"006", LocalDate.of(2022, 02, 19), 24, true, biblioteka.pronadjiTipClanarine(2), false);
 	//biblioteka.dodajClana(testClan);
 	
-	//ZanrKnjige testZanr = new ZanrKnjige("R", "roman");
+	//ZanrKnjige testZanr = new ZanrKnjige("R", "roman", false);
 	//biblioteka.dodajZanr(testZanr);
 	
 	
@@ -74,7 +78,7 @@ public static void main(String[] args) {
 	
 
 }
-public static void ispisiSvePodatke(Biblioteka biblioteka) {
+/*public static void ispisiSvePodatke(Biblioteka biblioteka) {
 	
 	
 	for(Zaposleni zaposlen : biblioteka.getSviZaposleni()) {
@@ -106,7 +110,7 @@ public static void ispisiSvePodatke(Biblioteka biblioteka) {
 	}
 	
 }
-
+*/
 /**************************************************************************************************************************/
 
 

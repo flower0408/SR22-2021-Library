@@ -1,4 +1,3 @@
-D|drama
-K|klasici
-F|filozofija
-R|roman
+D|drama|false
+K|klasici|false
+F|filozofija|false

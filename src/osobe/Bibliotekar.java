@@ -8,8 +8,8 @@ public class Bibliotekar extends Zaposleni{
 	
 
 	public Bibliotekar(int id, String ime, String prezime, String JMBG, String adresa, EnumPol pol,
-			String korisnickoIme, String korisnickaSifra, double plata) {
-		super(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata);
+			String korisnickoIme, String korisnickaSifra, double plata, boolean obrisan, EnumZaposleni zaposleni) {
+		super(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata, obrisan, zaposleni);
 		
 	}
 
@@ -17,7 +17,7 @@ public class Bibliotekar extends Zaposleni{
 	public String toString() {
 		return "Bibliotekar [korisnickoIme=" + korisnickoIme + ", korisnickaSifra=" + korisnickaSifra + ", plata="
 				+ plata + ", id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", JMBG=" + JMBG + ", adresa="
-				+ adresa + ", pol=" + pol + "]";
+				+ adresa + ", pol=" + pol + ", obrisan=" + obrisan + ", zaposleni=" + zaposleni + "]";
 	}
 	
 	

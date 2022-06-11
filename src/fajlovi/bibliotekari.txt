@@ -1,2 +1,2 @@
-1|Jovana|Jovanic|1111111111111|Darka Nisavica 14, Zrenjanin|0|jovanaj|6541|55000
-2|Laza|Lazic|222222222222|Jug Bogdana 22, Indjija|1|lazal|2332|66000
+1|Jovana|Jovanic|1111111111111|Darka Nisavica 14, Zrenjanin|0|jovanaj|6541|55000|false|1
+2|Laza|Lazic|222222222222|Jug Bogdana 22, Indjija|1|lazal|2332|66000|false|1

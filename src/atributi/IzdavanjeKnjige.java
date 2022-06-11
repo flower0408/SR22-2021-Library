@@ -15,21 +15,24 @@ public class IzdavanjeKnjige {
 		this.zaposleni = new Zaposleni();
 		this.clan = new ClanBiblioteke();
 		this.primerak = new PrimerakKnjige();
+		this.obrisan = false;
 	}
 	public IzdavanjeKnjige(LocalDate datumIznajmljivanja, LocalDate datumVracanja, Zaposleni zaposleni,
-			ClanBiblioteke clan, PrimerakKnjige primerak) {
+			ClanBiblioteke clan, PrimerakKnjige primerak, boolean obrisan) {
 		super();
 		this.datumIznajmljivanja = datumIznajmljivanja;
 		this.datumVracanja = datumVracanja;
 		this.zaposleni = zaposleni;
 		this.clan = clan;
 		this.primerak = primerak;
+		this.obrisan = obrisan;
 	}
 	protected LocalDate datumIznajmljivanja;
     protected LocalDate datumVracanja;
     protected Zaposleni zaposleni;
     protected ClanBiblioteke clan;
     protected PrimerakKnjige primerak;
+    protected boolean obrisan;
     
     
 	public LocalDate getDatumIznajmljivanja() {
@@ -63,10 +66,18 @@ public class IzdavanjeKnjige {
 		this.primerak = primerak;
 	}
 	
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
+	}
+	
 	@Override
 	public String toString() {
 		return "IzdavanjeKnjige [datumIznajmljivanja=" + datumIznajmljivanja + ", datumVracanja=" + datumVracanja
-				+ ", zaposleni=" + zaposleni + ", clan=" + clan + ", primerak=" + primerak + "]";
+				+ ", zaposleni=" + zaposleni + ", clan=" + clan + ", primerak=" + primerak + ", obrisan=" + obrisan + "]";
 	}
     
     

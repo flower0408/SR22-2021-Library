@@ -1,2 +1,2 @@
-1|253|true|1995|engleski|false|1
-2|364|false|2001|grcki|true|2
+1|253|true|1995|engleski|false|1|false
+2|364|false|2001|grcki|true|2|false

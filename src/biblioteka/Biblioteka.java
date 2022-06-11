@@ -20,6 +20,7 @@ import osobe.Administrator;
 import osobe.Bibliotekar;
 import osobe.ClanBiblioteke;
 import osobe.EnumPol;
+import osobe.EnumZaposleni;
 import osobe.Zaposleni;
 
 public class Biblioteka {
@@ -227,7 +228,7 @@ public class Biblioteka {
 				for (Knjiga knjiga : knjige) {
 					content += knjiga.getId() + "|" + knjiga.getNaslovKnjige() + "|"
 							+ knjiga.getOriginalniNaslovKnjige() + "|" + knjiga.getPisac() + "|"
-							+ knjiga.getGodinaPublikacije() + "|" + knjiga.getJezikOriginala() + "|" + knjiga.getOpis() + knjiga.getZanr()  + "\n";
+							+ knjiga.getGodinaPublikacije() + "|" + knjiga.getJezikOriginala() + "|" + knjiga.getOpis() + "|" + knjiga.getZanr() + "|" + knjiga.isObrisan() + "\n";
 				}
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 				writer.write(content);
@@ -243,7 +244,7 @@ public class Biblioteka {
 				File file = new File("C://Users/natas/eclipse-workspace/projekat/SR22-2021-UOP-projekat/src/fajlovi/" + imeFajla);
 				String content = "";
 				for (ZanrKnjige zanr : zanroviKnjige) {
-					content += zanr.getOznaka() + "|" + zanr.getOpis() + "\n";
+					content += zanr.getOznaka() + "|" + zanr.getOpis() + "|" + zanr.isObrisan() + "\n";
 				}
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -264,7 +265,7 @@ public class Biblioteka {
 							+ clan.getPrezime() + "|" + clan.getJMBG() + "|"
 							+ clan.getAdresa() + "|" + clan.getPol() + "|" + clan.getBrClanskeKarte()
 							+ "|" + clan.getDatumPoslednjeUplate() + "|" + clan.getBrojMeseciClanarine() 
-							+ "|" + clan.isAktivan() + "|" + clan.getTip() + "\n";
+							+ "|" + clan.isAktivan() + "|" + clan.getTip() + "|" + clan.isObrisan() + "\n";
 				}
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -284,7 +285,7 @@ public class Biblioteka {
 				for (PrimerakKnjige primerak : primerciKnjiga) {
 					content += primerak.getId() + "|" + primerak.getBrStrana() + "|" 
 							+ primerak.isMekPovez() + "|" + primerak.getGodinaStampanja() + "|"
-							+ primerak.getJezikSatmpanja() + "|" + primerak.isIznajmljena() + "|" + primerak.getKnjiga()  + "\n";
+							+ primerak.getJezikSatmpanja() + "|" + primerak.isIznajmljena() + "|" + primerak.getKnjiga() + "|" + primerak.isObrisan() +  "\n";
 				}
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -301,7 +302,7 @@ public class Biblioteka {
 				File file = new File("C://Users/natas/eclipse-workspace/projekat/SR22-2021-UOP-projekat/src/fajlovi/" + imeFajla);
 				String content = "";
 				for (TipClanarine tip : tipoviClanarine) {
-					content += tip.getId() + "|" + tip.getNaziv() + "|" + tip.getCena() + "\n";
+					content += tip.getId() + "|" + tip.getNaziv() + "|" + tip.getCena() + "|" + tip.isObrisan() + "\n";
 				}
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -321,7 +322,7 @@ public class Biblioteka {
 					content += sviadministratori.getId() + "|" + sviadministratori.getIme() + "|" 
 							+ sviadministratori.getPrezime() + "|" + sviadministratori.getJMBG() + "|"
 							+ sviadministratori.getAdresa() + "|" + sviadministratori.getPol() + "|" + sviadministratori.getKorisnickoIme() + "|" 
-							+ sviadministratori.getKorisnickaSifra() + sviadministratori.getPlata() + "\n";
+							+ sviadministratori.getKorisnickaSifra() + "|" + sviadministratori.getPlata() + "|" + sviadministratori.isObrisan() + "|" + sviadministratori.getZaposleni() + "\n";
 				}
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -339,8 +340,8 @@ public class Biblioteka {
 				for (Bibliotekar svibibliotekari : bibliotekari) {
 					content += svibibliotekari.getId() + "|" + svibibliotekari.getIme() + "|" 
 							+ svibibliotekari.getPrezime() + "|" + svibibliotekari.getJMBG() + "|"
-							+ svibibliotekari.getAdresa() + "|" + svibibliotekari.getPol() + "|" + svibibliotekari.getKorisnickoIme() + "|" 
-							+ svibibliotekari.getKorisnickaSifra() + svibibliotekari.getPlata() + "\n";
+							+ svibibliotekari.getAdresa() + "|" + svibibliotekari.getPol() + "|" + svibibliotekari.getKorisnickoIme() +  "|" 
+							+ svibibliotekari.getKorisnickaSifra() + "|" + svibibliotekari.getPlata() + "|" + svibibliotekari.isObrisan() + "|" + svibibliotekari.getZaposleni() +"\n";
 				}
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -359,7 +360,7 @@ public class Biblioteka {
 				for (IzdavanjeKnjige izdavanje : izdavanjeKnjiga) {
 					content += izdavanje.getDatumIznajmljivanja() + "|" + izdavanje.getDatumVracanja() + "|" 
 							+ izdavanje.getZaposleni() + "|" + izdavanje.getClan() + "|"
-							+ izdavanje.getPrimerak() + "\n";
+							+ izdavanje.getPrimerak() + "|" +izdavanje.isObrisan() + "\n";
 				}
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -374,11 +375,11 @@ public class Biblioteka {
 			try {
 				File file = new File("C://Users/natas/eclipse-workspace/projekat/SR22-2021-UOP-projekat/src/fajlovi/" + imeFajla);
 				String content = "";
-				for (Zaposleni zaposleni : sviZaposleni) {
-					content += zaposleni.getId() + "|" + zaposleni.getIme() + "|" 
-							+ zaposleni.getPrezime() + "|" + zaposleni.getJMBG() + "|"
-							+ zaposleni.getAdresa() + "|" + zaposleni.getPol() + "|" + zaposleni.getKorisnickoIme() + "|" 
-							+ zaposleni.getKorisnickaSifra() + zaposleni.getPlata() + "\n";
+				for (Zaposleni zaposlenI : sviZaposleni) {
+					content += zaposlenI.getId() + "|" + zaposlenI.getIme() + "|" 
+							+ zaposlenI.getPrezime() + "|" + zaposlenI.getJMBG() + "|"
+							+ zaposlenI.getAdresa() + "|" + zaposlenI.getPol() + "|" + zaposlenI.getKorisnickoIme() + "|" 
+							+ zaposlenI.getKorisnickaSifra() + "|" + zaposlenI.getPlata() + "|" + zaposlenI.isObrisan() + "|" + zaposlenI.getZaposleni() +"\n";
 				}
 
 				BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -412,10 +413,10 @@ public class Biblioteka {
 					String zanrId = split[7];
 					ZanrKnjige zanr = (ZanrKnjige) pronadjiZanr(zanrId);
 					
+					boolean obrisan = Boolean.parseBoolean(split[8]);
 					
 					
-					
-					Knjiga knjiga = new Knjiga(id, naslovKnjige, originalniNaslovKnjige, pisac, godinaPublikacije, jezikOriginala, opis, zanr);
+					Knjiga knjiga = new Knjiga(id, naslovKnjige, originalniNaslovKnjige, pisac, godinaPublikacije, jezikOriginala, opis, zanr, obrisan);
 					knjige.add(knjiga);
 					
 				}
@@ -446,9 +447,10 @@ public class Biblioteka {
 					
 					String oznaka = split[0];
 					String opis = split[1];
+					boolean obrisan = Boolean.parseBoolean(split[2]);
 					
 					
-					ZanrKnjige zanr = new ZanrKnjige(oznaka, opis);
+					ZanrKnjige zanr = new ZanrKnjige(oznaka, opis, obrisan);
 					zanroviKnjige.add(zanr);
 					
 				}
@@ -487,9 +489,11 @@ public class Biblioteka {
 					int tipClanarineId = Integer.parseInt(split[10]);
 					TipClanarine tipClanarine = (TipClanarine) pronadjiTipClanarine(tipClanarineId);
 					
+					boolean obrisan = Boolean.parseBoolean(split[11]);
+					
 					
 
-					ClanBiblioteke clan = new ClanBiblioteke(id, ime, prezime, JMBG, adresa, pol, brClanskeKarte, datumPoslednjeUplate, brojMeseciClanarine, aktivan, tipClanarine);
+					ClanBiblioteke clan = new ClanBiblioteke(id, ime, prezime, JMBG, adresa, pol, brClanskeKarte, datumPoslednjeUplate, brojMeseciClanarine, aktivan, tipClanarine, obrisan);
 					clanoviBiblioteke.add(clan);
 					
 				}
@@ -530,9 +534,11 @@ public class Biblioteka {
 					int KnjigaId = Integer.parseInt(split[6]);
 					Knjiga knjiga = (Knjiga) pronadjiKnjigu(KnjigaId);
 					
+					boolean obrisan = Boolean.parseBoolean(split[7]);
 					
 					
-					PrimerakKnjige primerak = new PrimerakKnjige(id, brStrana, mekPovez, godinaStampanja, jezikStampanja, iznajmljena, knjiga);
+					
+					PrimerakKnjige primerak = new PrimerakKnjige(id, brStrana, mekPovez, godinaStampanja, jezikStampanja, iznajmljena, knjiga, obrisan);
 					primerciKnjiga.add(primerak);
 					
 				}
@@ -565,9 +571,10 @@ public class Biblioteka {
 					int id = Integer.parseInt(split[0]);
 					String naziv = split[1];
 					double cena = Double.parseDouble(split[2]);
+					boolean obrisan = Boolean.parseBoolean(split[3]);
 					
 					
-					TipClanarine tip = new TipClanarine(id, naziv, cena);
+					TipClanarine tip = new TipClanarine(id, naziv, cena, obrisan);
 					tipoviClanarine.add(tip);
 					
 				}
@@ -602,9 +609,12 @@ public class Biblioteka {
 					String korisnickoIme = split[6];
 					String korisnickaSifra = split[7];
 					double plata = Double.parseDouble(split[8]);
+					boolean obrisan = Boolean.parseBoolean(split[9]);
+					int zaposleniInt = Integer.parseInt(split[10]);
+					EnumZaposleni zaposleni = EnumZaposleni.values()[zaposleniInt ];
 					
 					
-					Administrator sviadministratori = new Administrator(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata);
+					Administrator sviadministratori = new Administrator(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata, obrisan, zaposleni);
 					administratori.add(sviadministratori);
 					
 				}
@@ -638,9 +648,12 @@ public class Biblioteka {
 					String korisnickoIme = split[6];
 					String korisnickaSifra = split[7];
 					double plata = Double.parseDouble(split[8]);
+					boolean obrisan = Boolean.parseBoolean(split[9]);
+					int zaposleniInt = Integer.parseInt(split[10]);
+					EnumZaposleni zaposleni = EnumZaposleni.values()[zaposleniInt ];
 					
 					
-					Bibliotekar svibibliotekari = new Bibliotekar(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata);
+					Bibliotekar svibibliotekari = new Bibliotekar(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata, obrisan, zaposleni);
 					bibliotekari.add(svibibliotekari);
 					
 				}
@@ -677,8 +690,10 @@ public class Biblioteka {
 					int PrimerakKnjigeId = Integer.parseInt(split[4]);
 					PrimerakKnjige primerak = (PrimerakKnjige) pronadjiPrimerak(PrimerakKnjigeId);
 					
+					boolean obrisan = Boolean.parseBoolean(split[5]);
 					
-					IzdavanjeKnjige izdavanje = new IzdavanjeKnjige(datumIznajmljivanja, datumVracanja, zaposleni, clan, primerak);
+					
+					IzdavanjeKnjige izdavanje = new IzdavanjeKnjige(datumIznajmljivanja, datumVracanja, zaposleni, clan, primerak, obrisan);
 					izdavanjeKnjiga.add(izdavanje);
 					
 				}
@@ -712,10 +727,13 @@ public class Biblioteka {
 					String korisnickoIme = split[6];
 					String korisnickaSifra = split[7];
 					double plata = Double.parseDouble(split[8]);
+					boolean obrisan = Boolean.parseBoolean(split[9]);
+					int zaposleniInt = Integer.parseInt(split[10]);
+					EnumZaposleni zaposleni = EnumZaposleni.values()[zaposleniInt ];
 					
 					
-					Zaposleni zaposleni = new Zaposleni(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata);
-					sviZaposleni.add(zaposleni);
+					Zaposleni zaposlenI = new Zaposleni(id, ime, prezime, JMBG, adresa, pol, korisnickoIme, korisnickaSifra, plata, obrisan, zaposleni);
+					sviZaposleni.add(zaposlenI);
 					
 				}
 				reader.close();
@@ -806,9 +824,9 @@ public class Biblioteka {
 		}
 		
 		public Zaposleni pronadjiZaposlenog(int id) {
-			for (Zaposleni zaposleni : sviZaposleni) {
-				if(zaposleni.getId() == id) {
-					return zaposleni;
+			for (Zaposleni zaposlenI : sviZaposleni) {
+				if(zaposlenI.getId() == id) {
+					return zaposlenI;
 				}
 			}
 			return null;
@@ -820,8 +838,8 @@ public void dodajTipClanarine(TipClanarine tip) {
 	this.tipoviClanarine.add(tip);
 }
 
-public void dodajZaposlenog(Zaposleni zaposleni) {
-	this.sviZaposleni.add(zaposleni);
+public void dodajZaposlenog(Zaposleni zaposlenI) {
+	this.sviZaposleni.add(zaposlenI);
 }
 
 public void dodajAdministratora(Administrator sviadministratori) {
@@ -850,11 +868,164 @@ public void dodajPrimerakKnjige(PrimerakKnjige primerak) {
 	
 }
 
-public void dodajIznajmljivanje(IzdavanjeKnjige izdavanje) {
+public void dodajIzdavanje(IzdavanjeKnjige izdavanje) {
 	this.izdavanjeKnjiga.add(izdavanje);
 	
 }
 
+public void obrisiTipClanarine(TipClanarine tip) {
+	this.tipoviClanarine.remove(tip);
+}
+
+public void obrisiZaposlenog(Zaposleni zaposlenI) {
+	this.sviZaposleni.remove(zaposlenI);
+}
+
+public void obrisiZanr(ZanrKnjige zanr) {
+	this.zanroviKnjige.remove(zanr);
+}
+
+public void obrisiKnjigu(Knjiga knjiga) {
+	this.knjige.remove(knjiga);
+	
+}
+
+public void obrisiClana(ClanBiblioteke clan) {
+	this.clanoviBiblioteke.remove(clan);
+	
+}
+
+public void obrisiPrimerakKnjige(PrimerakKnjige primerak) {
+	this.primerciKnjiga.remove(primerak);
+	
+}
+
+public void obrisiIzdavanje(IzdavanjeKnjige izdavanje) {
+	this.izdavanjeKnjiga.remove(izdavanje);
+	
+	
+}
+
+public void obrisiAdministratora(Administrator sviadministratori) {
+	this.administratori.remove(sviadministratori);
+	
+	
+}
+
+public void obrisiBibliotekara(Bibliotekar svibibliotekari) {
+	this.bibliotekari.remove(svibibliotekari);
+	
+	
+}
+
+
+
+/******************************************************************************************************/
+
+public ArrayList<TipClanarine> sviNeobrisaniTipovi() {
+	ArrayList<TipClanarine> neobrisani = new ArrayList<TipClanarine>();
+	for(TipClanarine tip : tipoviClanarine) {
+		if(!tip.isObrisan()) {
+			neobrisani.add(tip);
+		}
+	}
+	return neobrisani;
+}
+
+public ArrayList<Zaposleni> sviNeobrisaniZaposleni() {
+	ArrayList<Zaposleni> neobrisani = new ArrayList<Zaposleni>();
+	for(Zaposleni zaposlenI : sviZaposleni) {
+		if(!zaposlenI.isObrisan()) {
+			neobrisani.add(zaposlenI);
+		}
+	}
+	return neobrisani;
+}
+
+public ArrayList<ZanrKnjige> sviNeobrisaniZanrovi() {
+	ArrayList<ZanrKnjige> neobrisani = new ArrayList<ZanrKnjige>();
+	for(ZanrKnjige zanr : zanroviKnjige) {
+		if(!zanr.isObrisan()) {
+			neobrisani.add(zanr);
+		}
+	}
+	return neobrisani;
+}
+
+public ArrayList<Knjiga> sveNeobrisaneKnjige() {
+	ArrayList<Knjiga> neobrisane = new ArrayList<Knjiga>();
+	for(Knjiga knjiga : knjige) {
+		if(!knjiga.isObrisan()) {
+			neobrisane.add(knjiga);
+		}
+	}
+	return neobrisane;
+}
+
+public ArrayList<ClanBiblioteke> sviNeobrisaniClanovi() {
+	ArrayList<ClanBiblioteke> neobrisani = new ArrayList<ClanBiblioteke>();
+	for(ClanBiblioteke clan : clanoviBiblioteke) {
+		if(!clan.isObrisan()) {
+			neobrisani.add(clan);
+		}
+	}
+	return neobrisani;
+}
+
+public ArrayList<PrimerakKnjige> sviNeobrisaniPrimerci() {
+	ArrayList<PrimerakKnjige> neobrisani = new ArrayList<PrimerakKnjige>();
+	for(PrimerakKnjige primerak : primerciKnjiga) {
+		if(!primerak.isObrisan()) {
+			neobrisani.add(primerak);
+		}
+	}
+	return neobrisani;
+}
+
+public ArrayList<IzdavanjeKnjige> svaNeobrisanaIzdavanja() {
+	ArrayList<IzdavanjeKnjige> neobrisana = new ArrayList<IzdavanjeKnjige>();
+	for(IzdavanjeKnjige izdavanje : izdavanjeKnjiga) {
+		if(!izdavanje.isObrisan()) {
+			neobrisana.add(izdavanje);
+		}
+	}
+	return neobrisana;
+}
+
+public ArrayList<Administrator> sviNeobrisaniAdministratori() {
+	ArrayList<Administrator> neobrisana = new ArrayList<Administrator>();
+	for(Administrator i : administratori) {
+		if(!i.isObrisan()) {
+			neobrisana.add(i);
+		}
+	}
+	return neobrisana;
+}
+
+public ArrayList<Bibliotekar> sviNeobrisaniBibliotekari() {
+	ArrayList<Bibliotekar> neobrisana = new ArrayList<Bibliotekar>();
+	for(Bibliotekar i : bibliotekari) {
+		if(!i.isObrisan()) {
+			neobrisana.add(i);
+		}
+	}
+	return neobrisana;
+}
+
+/******************************************************************************************************/
+
+public Zaposleni login(String korisnickoIme, String sifra, EnumZaposleni tipZaposlenog) {
+	for(Zaposleni zaposleni : sviZaposleni) {
+		if(zaposleni.getKorisnickoIme().equalsIgnoreCase(korisnickoIme) &&
+				zaposleni.getKorisnickaSifra().equals(sifra) && !zaposleni.isObrisan()) {
+			return zaposleni;
+		}
+	}
+	return null;
+}
+
 
 }
+
+
 

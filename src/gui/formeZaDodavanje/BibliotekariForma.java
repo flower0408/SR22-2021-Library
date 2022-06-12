@@ -13,8 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-
-import osobe.Administrator;
+import osobe.Bibliotekar;
 import osobe.EnumPol;
 import osobe.EnumZaposleni;
 
@@ -24,7 +23,7 @@ import net.miginfocom.swing.MigLayout;
 import biblioteka.Biblioteka;
 
 
-public class AdministratoriForma extends JFrame{
+public class BibliotekariForma extends JFrame{
 	
 	private JLabel lbId = new JLabel ("ID");
 	private JTextField txtId = new JTextField(25);
@@ -53,17 +52,18 @@ public class AdministratoriForma extends JFrame{
 	
 	
 
-	private Administrator administrator;
+
 	private Biblioteka biblioteka;
+	private Bibliotekar bibliotekar;
 	
-	public AdministratoriForma(Biblioteka biblioteka, Administrator administrator) {
+	public BibliotekariForma(Biblioteka biblioteka, Bibliotekar bibliotekar) {
 		this.biblioteka = biblioteka;
-		this.administrator = administrator;
-		if(administrator == null) {
-			setTitle("Dodavanje administartora");
+		this.bibliotekar = bibliotekar;
+		if (bibliotekar == null) {
+			setTitle("Dodavanje bibliotekara");
 		}
 		else {
-			setTitle("Izmena podataka administartora - [" + administrator.getId() + "]");
+			setTitle("Izmena podataka bibliotekara - [" + bibliotekar.getId() + "]");
 		}
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -80,7 +80,7 @@ public class AdministratoriForma extends JFrame{
 		MigLayout layout = new MigLayout("wrap 2", "[][]", "[][][][][]20[]");
 		setLayout(layout);
 		
-		if(administrator != null) {
+		if(bibliotekar != null) {
 			txtId.setEnabled(false);
 			popuniPolja();
 			
@@ -122,15 +122,15 @@ public class AdministratoriForma extends JFrame{
 	}
 	
 	private void popuniPolja() {
-		txtId.setText(String.valueOf(administrator.getId()));
-		txtIme.setText(administrator.getIme());
-		txtPrezime.setText(administrator.getPrezime());
-		txtJMBG.setText(administrator.getJMBG());
-		txtAdresa.setText(administrator.getAdresa());
-		txtKorisnickoIme.setText(administrator.getKorisnickoIme());
-		txtKorisnickaSifra.setText(administrator.getKorisnickaSifra());
-		txtPlata.setText(String.valueOf(administrator.getPlata()));
-		cbObrisan.setSelectedItem(administrator.isObrisan());
+		txtId.setText(String.valueOf(bibliotekar.getId()));
+		txtIme.setText(bibliotekar.getIme());
+		txtPrezime.setText(bibliotekar.getPrezime());
+		txtJMBG.setText(bibliotekar.getJMBG());
+		txtAdresa.setText(bibliotekar.getAdresa());
+		txtKorisnickoIme.setText(bibliotekar.getKorisnickoIme());
+		txtKorisnickaSifra.setText(bibliotekar.getKorisnickaSifra());
+		txtPlata.setText(String.valueOf(bibliotekar.getPlata()));
+		cbObrisan.setSelectedItem(bibliotekar.isObrisan());
 	
 	
 		
@@ -156,25 +156,25 @@ public class AdministratoriForma extends JFrame{
 					String zaposleni = (String) cbEnumZap.getSelectedItem();
 					
 					
-					if(administrator == null) { // DODAVANJE:
-						Administrator novi = new Administrator(id, ime, prezime, JMBG, adresa, EnumPol.valueOf(pol), korisnickoIme, korisnickaSifra, plata, obrisan, EnumZaposleni.valueOf(zaposleni));
-						biblioteka.dodajAdministratora(novi);
+					if(bibliotekar == null) { // DODAVANJE:
+						Bibliotekar novi = new Bibliotekar(id, ime, prezime, JMBG, adresa, EnumPol.valueOf(pol), korisnickoIme, korisnickaSifra, plata, obrisan, EnumZaposleni.valueOf(zaposleni));
+						biblioteka.dodajBibliotekara(novi);
 					}else {
-						administrator.setIme(ime);
-						administrator.setPrezime(prezime);
-						administrator.setJMBG(JMBG);
-						administrator.setAdresa(adresa);
-						administrator.setPol(EnumPol.valueOf(pol));
-						administrator.setKorisnickoIme(korisnickoIme);
-						administrator.setKorisnickaSifra(korisnickaSifra);
-						administrator.setPlata(plata);
-						administrator.setObrisan(obrisan);
-						administrator.setZaposleni(EnumZaposleni.valueOf(zaposleni));
+						bibliotekar.setIme(ime);
+						bibliotekar.setPrezime(prezime);
+						bibliotekar.setJMBG(JMBG);
+						bibliotekar.setAdresa(adresa);
+						bibliotekar.setPol(EnumPol.valueOf(pol));
+						bibliotekar.setKorisnickoIme(korisnickoIme);
+						bibliotekar.setKorisnickaSifra(korisnickaSifra);
+						bibliotekar.setPlata(plata);
+						bibliotekar.setObrisan(obrisan);
+						bibliotekar.setZaposleni(EnumZaposleni.valueOf(zaposleni));
 						}
 					
-					biblioteka.snimiAdministratore(BibliotekaMain.ADMINISTRATORI_FAJL);
-					AdministratoriForma.this.dispose();
-					AdministratoriForma.this.setVisible(false);
+					biblioteka.snimiBibliotekare(BibliotekaMain.BIBLIOTEKARI_FAJL);
+					BibliotekariForma.this.dispose();
+					BibliotekariForma.this.setVisible(false);
 				}
 			}
 		});
@@ -187,11 +187,11 @@ public class AdministratoriForma extends JFrame{
 		if(txtId.getText().trim().equals("")) {
 			poruka += "- Morate uneti ID\n";
 			ok = false;
-		}else if(administrator == null) {
+		}else if(bibliotekar == null) {
 			String id = txtId.getText().trim();
-			Administrator pronadjen = biblioteka.pronadjiAdministartora(id);
+			Bibliotekar pronadjen = biblioteka.pronadjiBibliotekara(id);
 			if(pronadjen != null) {
-				poruka += "- Administrator sa unetim ID vec postoji\n";
+				poruka += "- Bibliotekar sa unetim ID vec postoji\n";
 				ok = false;
 			}
 		}

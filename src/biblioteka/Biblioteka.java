@@ -805,9 +805,9 @@ public class Biblioteka {
 			return null;
 		}
 		
-		public Bibliotekar pronadjiBibliotekara(int id) {
+		public Bibliotekar pronadjiBibliotekara(String bibliotekarId) {
 			for (Bibliotekar svibibliotekari : bibliotekari) {
-				if(svibibliotekari.getId().equals(id)) {
+				if(svibibliotekari.getId().equals(bibliotekarId)) {
 					return svibibliotekari;
 				}
 			}

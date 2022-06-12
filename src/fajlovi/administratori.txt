@@ -1,4 +1,5 @@
-1|Sima|Simic|11111555552|Milutina Milankovica 4, Beograd|MUSKI|simas|5555|75000.0|false|ADMINISTRATOR
-2|Marko|Markovic|22222777774|Hilandarska 14, Indjija|MUSKI|markom|2222|56000.0|true|ADMINISTRATOR
-3|Mija|Maric|77777777777|Ive Andrica 2, Novi Sad|ZENSKI|maram|44551|74000.0|true|ADMINISTRATOR
-5|Natasa|Katic|0101010101|Dalmatinska 12, Beograd|ZENSKI|natasak|14253|100000.0|false|ADMINISTRATOR
+1|Sima|Simic|11111555552|Milutina Milankovica 4, Beograd|1|simas|5555|75000.0|false|0
+2|Marko|Markovic|22222777774|Hilandarska 14, Indjija|1|markom|2222|56000.0|true|0
+3|Mija|Maric|77777777777|Ive Andrica 2, Novi Sad|0|maram|44551|74000.0|true|0
+5|Natasa|Katic|0101010101|Dalmatinska 12, Beograd|0|natasak|14253|100000.0|false|0
+8|Luna|Mandic|8787454569|Stevana Velikog 21, Indjija|0|lunam|5824|980000.0|false|0

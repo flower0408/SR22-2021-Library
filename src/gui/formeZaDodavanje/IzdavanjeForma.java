@@ -17,10 +17,12 @@ import javax.swing.JTextField;
 import biblioteka.Biblioteka;
 import atributi.IzdavanjeKnjige;
 import atributi.Knjiga;
+import atributi.PrimerakKnjige;
 import atributi.TipClanarine;
 import atributi.ZanrKnjige;
 import main.BibliotekaMain;
 import net.miginfocom.swing.MigLayout;
+import osobe.ClanBiblioteke;
 import osobe.EnumPol;
 import osobe.Zaposleni;
 
@@ -52,9 +54,9 @@ public class IzdavanjeForma extends JFrame {
 		this.biblioteka = biblioteka;
 		this.izdavanje = izdavanje;
 		if(izdavanje == null) {
-			setTitle("Dodavanje člana :");
+			setTitle("Dodavanje izdavanja :");
 		}else {
-			setTitle("Izmena podataka člana [" + izdavanje.getId() + "]");
+			setTitle("Izmena podataka izdavanja ");
 		}
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -84,28 +86,16 @@ public class IzdavanjeForma extends JFrame {
 		}
 		
 		
-		add(lbId);
-		add(txtId);
-		add(lbIme);
-		add(txtIme);
-		add(lbPrezime);
-		add(txtPrezime);
-		add(lbJmbg);
-		add(txtJmbg);
-		add(lbAdresa);
-		add(txtAdresa);
-		add(lbPol);
-		add(boxPol);
-		add(lbBrkarte);
-		add(txtBrkarte);
-		add(lbDatum);
-		add(txtDatum);
-		add(lbBrmesec);
-		add(txtBrmesec);
-		add(lbAktivan);
-		add(boxAktivan);
-		add(lbTipclanarine);
-		add(boxTipclanarine);
+		add(lbDatumIznajmljivanja);
+		add(txtDatumIznajmljivanja);
+		add(lbDatumVracanja);
+		add(txtDatumVracanja);
+		add(lbZaposleni);
+		add(boxZaposleni);
+		add(lbClan);
+		add(boxClan);
+		add(lbPrimerak);
+		add(boxPrimerak);
 		add(lbObrisan);
 		add(boxObrisan);
 		add(new JLabel());
@@ -119,8 +109,8 @@ public class IzdavanjeForma extends JFrame {
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ClanoviForma.this.dispose();
-				ClanoviForma.this.setVisible(false);
+				IzdavanjeForma.this.dispose();
+				IzdavanjeForma.this.setVisible(false);
 			}
 		});
 		
@@ -129,40 +119,30 @@ public class IzdavanjeForma extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(validacija()) {
-					String id = txtId.getText().trim();	
-					String ime = txtIme.getText().trim();
-					String prezime = txtPrezime.getText().trim();
-					String jmbg = txtJmbg.getText().trim();
-					String adresa = txtAdresa.getText().trim();
-					String pol =  (String) boxPol.getSelectedItem();
-					String brKarte = txtBrkarte.getText().trim();
-					LocalDate datum = LocalDate.parse(txtDatum.getText().trim()) ;
-					int meseci = Integer.parseInt(txtBrmesec.getText().trim()) ;
-					Boolean aktivan = (Boolean) boxAktivan.getSelectedItem();
-					int tipId = (int) boxTipclanarine.getSelectedItem();
-					TipClanarine tipClanarine = biblioteka.pronadjiTipClanarine(tipId) ;
+					LocalDate iznajmljivanje = LocalDate.parse(txtDatumIznajmljivanja.getText().trim()) ;
+					LocalDate vracanje = LocalDate.parse(txtDatumVracanja.getText().trim()) ;
+					String zaposleniId = boxZaposleni.getSelectedItem().toString();
+					Zaposleni  zaposleni = biblioteka.pronadjiZaposlenog(zaposleniId) ;
+					String clanId = boxClan.getSelectedItem().toString();
+					ClanBiblioteke  clan = biblioteka.pronadjiClana(clanId) ;
+					String primerakId = boxPrimerak.getSelectedItem().toString();
+					PrimerakKnjige  primerak = biblioteka.pronadjiPrimerak(primerakId) ;
 					Boolean obrisan = (Boolean) boxObrisan.getSelectedItem();
 					
-					if(clan == null) {
-						ClanBiblioteke novi = new ClanBiblioteke (id, ime, prezime, jmbg, adresa, EnumPol.valueOf(pol), brKarte, datum, meseci, aktivan, tipClanarine, obrisan );
-						biblioteka.dodajClana(novi);
+					if(izdavanje == null) {
+						IzdavanjeKnjige novi = new IzdavanjeKnjige (iznajmljivanje, vracanje, zaposleni, clan, primerak, obrisan );
+						biblioteka.dodajIzdavanje(novi);
 					}else {
-						clan.setId(id);
-						clan.setIme(ime);
-						clan.setPrezime(prezime);
-						clan.setJMBG(jmbg);
-						clan.setAdresa(adresa);
-						clan.setPol(EnumPol.valueOf(pol));
-						clan.setBrClanskeKarte(brKarte);
-						clan.setDatumPoslednjeUplate(datum);
-						clan.setBrojMeseciClanarine(meseci);
-						clan.setAktivan(aktivan);
-						clan.setTip(tipClanarine);
-						clan.setObrisan(obrisan);
+						izdavanje.setDatumIznajmljivanja(iznajmljivanje);
+						izdavanje.setDatumVracanja(vracanje);
+						izdavanje.setZaposleni(zaposleni);
+						izdavanje.setClan(clan);
+						izdavanje.setPrimerak(primerak);
+						izdavanje.setObrisan(obrisan);
 					}
-					biblioteka.snimiClanove(main.BibliotekaMain.CLANOVI_FAJL);
-					ClanoviForma.this.dispose();
-					ClanoviForma.this.setVisible(false);
+					biblioteka.snimiClanove(main.BibliotekaMain.IZNAJMLJIVANJE_FAJL);
+					IzdavanjeForma.this.dispose();
+					IzdavanjeForma.this.setVisible(false);
 				
 					
 					
@@ -177,17 +157,12 @@ public class IzdavanjeForma extends JFrame {
 	
 	private void popuniPolja() {
 		
-		txtId.setText(String.valueOf(clan.getId()));
-		txtIme.setText(clan.getIme());
-		txtPrezime.setText(clan.getPrezime());
-		txtJmbg.setText(clan.getJMBG());
-		txtAdresa.setText(clan.getAdresa());
-		txtBrkarte.setText(clan.getBrClanskeKarte());
-		txtDatum.setText(clan.getDatumPoslednjeUplate().toString());
-		txtBrmesec.setText("" + clan.getBrojMeseciClanarine() + "" );
-		boxAktivan.setSelectedItem(clan.isAktivan());
-		boxTipclanarine.setSelectedItem(clan.getTip());
-		boxObrisan.setSelectedItem(clan.isObrisan());
+		txtDatumIznajmljivanja.setText(izdavanje.getDatumIznajmljivanja().toString());
+		txtDatumVracanja.setText(izdavanje.getDatumVracanja().toString());
+		boxZaposleni.setSelectedItem(izdavanje.getZaposleni());
+		boxClan.setSelectedItem(izdavanje.getClan());
+		boxPrimerak.setSelectedItem(izdavanje.getPrimerak());
+		boxObrisan.setSelectedItem(izdavanje.isObrisan());
 		
 		
 	}

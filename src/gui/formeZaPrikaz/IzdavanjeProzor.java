@@ -3,10 +3,13 @@ package gui.formeZaPrikaz;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
@@ -14,6 +17,10 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import biblioteka.Biblioteka;
+import gui.formeZaDodavanje.AdministratoriForma;
+import gui.formeZaDodavanje.IzdavanjeForma;
+import main.BibliotekaMain;
+import osobe.Administrator;
 import atributi.IzdavanjeKnjige;
 import atributi.PrimerakKnjige;
 
@@ -22,32 +29,38 @@ public class IzdavanjeProzor extends JFrame {
 	private Biblioteka biblioteka;
 	private DefaultTableModel tableModel;
 	private JTable iznajmljivanjeTabela;
+	
+	private JToolBar mainToolbar = new JToolBar();
+	private JButton btnAdd = new JButton();
+	private JButton btnEdit = new JButton();
+	private JButton btnDelete = new JButton();
+	
 
 	public IzdavanjeProzor(Biblioteka biblioteka) {
+
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage(IzdavanjeProzor.class.getResource("/slike/transfer.png")));
 		this.biblioteka = biblioteka;
 		setTitle("Izdavanje");
-		setSize(1300, 400);
+		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new BorderLayout(0, 0));
+		initGUI();
+		initActions();
 		
-		JToolBar toolBar = new JToolBar();
-		toolBar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		getContentPane().add(toolBar, BorderLayout.NORTH);
+	}
 		
-		JButton btnNewButton = new JButton("  ");
-		btnNewButton.setIcon(new ImageIcon(ClanoviProzor.class.getResource("/slike/add.png")));
-		toolBar.add(btnNewButton);
+	private void initGUI() {
+		ImageIcon addIcon = new ImageIcon(getClass().getResource("/slike/add.gif"));
+		btnAdd.setIcon(addIcon);
+		ImageIcon editIcon = new ImageIcon(getClass().getResource("/slike/edit.gif"));
+		btnEdit.setIcon(editIcon);
+		ImageIcon deleteIcon = new ImageIcon(getClass().getResource("/slike/remove.gif"));
+		btnDelete.setIcon(deleteIcon);
 		
-		JButton btnNewButton_1 = new JButton("  ");
-		btnNewButton_1.setIcon(new ImageIcon(ClanoviProzor.class.getResource("/slike/edit.png")));
-		toolBar.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("  ");
-		btnNewButton_2.setIcon(new ImageIcon(ClanoviProzor.class.getResource("/slike/remove.png")));
-		toolBar.add(btnNewButton_2);
+		mainToolbar.add(btnAdd);
+		mainToolbar.add(btnEdit);
+		mainToolbar.add(btnDelete);
+		add(mainToolbar, BorderLayout.NORTH);
 		
 		
 		String[] zaglavlja = new String[] {"Datum iznajmljivanja", "Datum vracanja", "Zaposleni", "Član", "Primerak knjige", "Obrisan"};
@@ -76,4 +89,47 @@ public class IzdavanjeProzor extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(iznajmljivanjeTabela);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 	}
+	private void initActions() {
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int red = iznajmljivanjeTabela.getSelectedRow();
+				if(red == -1) {
+					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
+				}else {
+					
+					int	izbor = JOptionPane.showConfirmDialog(null, 
+							"Da li ste sigurni da zelite da obrisete administartora?"
+							 + " - Porvrda brisanja");
+					if(izbor == JOptionPane.YES_OPTION) {
+						
+						tableModel.removeRow(red);
+						biblioteka.snimiIzdavanje(BibliotekaMain.IZNAJMLJIVANJE_FAJL);
+					}
+				}
+			}
+		});
+		
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				IzdavanjeForma df = new IzdavanjeForma(biblioteka, null);
+				df.setVisible(true);
+			}
+		});
+		
+		btnEdit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int red = iznajmljivanjeTabela.getSelectedRow();
+				if(red == -1) {
+					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+	}
+	
+
 }
+
+

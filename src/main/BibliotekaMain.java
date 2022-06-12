@@ -25,7 +25,7 @@ public class BibliotekaMain {
 	private static String TIPOVICLANARINE_FAJL = "tipoviClanarine.txt";
 	public static String ADMINISTRATORI_FAJL = "administratori.txt";
 	public static String BIBLIOTEKARI_FAJL = "bibliotekari.txt";
-	private static String IZNAJMLJIVANJE_FAJL = "izdavanjeKnjiga.txt";
+	public static String IZNAJMLJIVANJE_FAJL = "izdavanjeKnjiga.txt";
 	public static String ZAPOSLENI_FAJL = "sviZaposleni.txt";
 	
 	

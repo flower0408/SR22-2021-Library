@@ -524,7 +524,7 @@ public class Biblioteka {
 					
 					String[] split = line.split("\\|");
 					
-					int id = Integer.parseInt(split[0]);
+					String id = split[0];
 					int brStrana = Integer.parseInt(split[1]);
 					boolean mekPovez = Boolean.parseBoolean(split[2]);
 					int godinaStampanja = Integer.parseInt(split[3]);
@@ -681,13 +681,13 @@ public class Biblioteka {
 					LocalDate datumIznajmljivanja = LocalDate.parse(split[0]);
 					LocalDate datumVracanja = LocalDate.parse(split[1]);
 					
-					int ZaposleniId = Integer.parseInt(split[2]);
+					String ZaposleniId = split[2];
 					Zaposleni zaposleni = (Zaposleni) pronadjiZaposlenog(ZaposleniId);
 					
-					int ClanId = Integer.parseInt(split[3]);
+					String ClanId = split[3];
 					ClanBiblioteke clan = (ClanBiblioteke) pronadjiClana(ClanId);
 					
-					int PrimerakKnjigeId = Integer.parseInt(split[4]);
+					String PrimerakKnjigeId = split[4];
 					PrimerakKnjige primerak = (PrimerakKnjige) pronadjiPrimerak(PrimerakKnjigeId);
 					
 					boolean obrisan = Boolean.parseBoolean(split[5]);
@@ -770,9 +770,9 @@ public class Biblioteka {
 
 
 
-		public PrimerakKnjige pronadjiPrimerak(int id) {
+		public PrimerakKnjige pronadjiPrimerak(String id) {
 			for (PrimerakKnjige primerak : primerciKnjiga) {
-				if(primerak.getId() == id) {
+				if(primerak.getId().equals(id)) {
 					return primerak;
 				}
 			}
@@ -784,7 +784,7 @@ public class Biblioteka {
 
 
 
-		public ClanBiblioteke pronadjiClana(int id) {
+		public ClanBiblioteke pronadjiClana(String id) {
 			for (ClanBiblioteke clan : clanoviBiblioteke) {
 				if(clan.getId().equals(id)) {
 					return clan;
@@ -823,7 +823,7 @@ public class Biblioteka {
 			return null;
 		}
 		
-		public Zaposleni pronadjiZaposlenog(int id) {
+		public Zaposleni pronadjiZaposlenog(String id) {
 			for (Zaposleni zaposlenI : sviZaposleni) {
 				if(zaposlenI.getId().equals(id)) {
 					return zaposlenI;

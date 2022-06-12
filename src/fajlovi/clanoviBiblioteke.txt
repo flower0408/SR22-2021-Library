@@ -1,2 +1,3 @@
 1|Maja|Drazic|15428976652|Ive Andrica 30, Indjija|0|001|2021-12-05|6|true|1|false
 2|Darko|Lazic|48641684110|Zdravka Celara 54, Beograd|1|002|2022-04-04|10|true|2|false
+3|Petar|Peric|254896142|Adresa|1|003|2021-02-02|5|true|2|true

@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,41 +16,38 @@ import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import biblioteka.Biblioteka;
-import atributi.Knjiga;
-import gui.formeZaDodavanje.KnjigeForma;
+import atributi.ZanrKnjige;
+import gui.formeZaDodavanje.ClanoviForma;
+import gui.formeZaDodavanje.SviZanroviForma;
 import main.BibliotekaMain;
 import osobe.ClanBiblioteke;
 
-public class KnjigeProzor extends JFrame {
-
+public class SviZanroviProzor extends JFrame {
+	
 	private Biblioteka biblioteka;
 	private DefaultTableModel tableModel;
-	private JTable knjigeTabela;
+	private JTable zanroviTabela;
 	
 	private JToolBar mainToolbar = new JToolBar();
 	private JButton btnAdd = new JButton();
 	private JButton btnEdit = new JButton();
 	private JButton btnDelete = new JButton();
 	
-	public KnjigeProzor(Biblioteka biblioteka) {
-		
 	
+	public SviZanroviProzor(Biblioteka biblioteka) {
+		
+		
 		this.biblioteka = biblioteka;
-		setTitle("Knjige");
+		setTitle("Žanrovi knjiga");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(new BorderLayout(0, 0));
-		gui();
+		initGUI();
 		initAction();
-	}
-
+		
+		}
 	
-
-
-	private void gui() {
-		
-		
+	private void initGUI() {
 		ImageIcon addIcon = new ImageIcon(getClass().getResource("/slike/add.gif"));
 		btnAdd.setIcon(addIcon);
 		ImageIcon editIcon = new ImageIcon(getClass().getResource("/slike/edit.gif"));
@@ -62,38 +60,33 @@ public class KnjigeProzor extends JFrame {
 		mainToolbar.add(btnDelete);
 		add(mainToolbar, BorderLayout.NORTH);
 		
+		String[] zaglavlja = new String[] {"Oznaka", "Opis", "Obrisan"};
+		Object[][] sadrzaj = new Object[biblioteka.sviNeobrisaniAdministratori().size()][zaglavlja.length];
 		
-		String[] zaglavlja = new String[] {"ID", "Naslov", "Originalni naslov", "Pisac", "Godina publikacije","Jezik originala", "Opis knjige", "Žanr", "Obrisan"};
-		Object[][] sadrzaj = new Object[biblioteka.sveNeobrisaneKnjige().size()][zaglavlja.length];
+		for(int i=0; i<biblioteka.sviNeobrisaniZanrovi().size(); i++) {
+			ZanrKnjige zanr = biblioteka.sviNeobrisaniZanrovi().get(i);
+			sadrzaj[i][0] = zanr.getOznaka();
+			sadrzaj[i][1] = zanr.getOpis();
+			sadrzaj[i][2] = zanr.isObrisan();
 		
-		for(int i=0; i<biblioteka.sveNeobrisaneKnjige().size(); i++) {
-			Knjiga knjiga = biblioteka.sveNeobrisaneKnjige().get(i);
-			sadrzaj[i][0] = knjiga.getId();
-			sadrzaj[i][1] = knjiga.getNaslovKnjige();
-			sadrzaj[i][2] = knjiga.getOriginalniNaslovKnjige();
-			sadrzaj[i][3] = knjiga.getPisac();
-			sadrzaj[i][4] = knjiga.getGodinaPublikacije();
-			sadrzaj[i][5] = knjiga.getJezikOriginala();
-			sadrzaj[i][6] = knjiga.getOpis();
-			sadrzaj[i][7] = knjiga.getZanr();
-			sadrzaj[i][8] = knjiga.isObrisan();
 	
 		}
 		
 		tableModel = new DefaultTableModel(sadrzaj, zaglavlja);
-		knjigeTabela = new JTable(tableModel);
+		zanroviTabela = new JTable(tableModel);
 		
-		knjigeTabela.setRowSelectionAllowed(true);
-		knjigeTabela.setColumnSelectionAllowed(false);
-		knjigeTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		knjigeTabela.setDefaultEditor(Object.class, null);
-		knjigeTabela.getTableHeader().setReorderingAllowed(false);
+		zanroviTabela.setRowSelectionAllowed(true);
+		zanroviTabela.setColumnSelectionAllowed(false);
+		zanroviTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		zanroviTabela.setDefaultEditor(Object.class, null);
+		zanroviTabela.getTableHeader().setReorderingAllowed(false);
 		
-		JScrollPane scrollPane = new JScrollPane(knjigeTabela);
+		JScrollPane scrollPane = new JScrollPane(zanroviTabela);
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
+		initAction();
 	}
-		
+	
 	
 	private void initAction() {
 		
@@ -101,8 +94,8 @@ public class KnjigeProzor extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				KnjigeForma kf = new KnjigeForma(biblioteka, null);
-				kf.setVisible(true);
+				SviZanroviForma zf = new SviZanroviForma(biblioteka, null);
+				zf.setVisible(true);
 				
 			}
 		});
@@ -111,15 +104,15 @@ public class KnjigeProzor extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int red = knjigeTabela.getSelectedRow();
+				int red = zanroviTabela.getSelectedRow();
 				if(red == -1) {
 					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli !", "Greska", JOptionPane.WARNING_MESSAGE);
 				}else {
 					
-					String knjigaId = tableModel.getValueAt(red, 0).toString();
-					Knjiga k = biblioteka.pronadjiKnjigu(Integer.parseInt(knjigaId));
-					KnjigeForma kf = new KnjigeForma(biblioteka, k);
-						kf.setVisible(true);
+					String zanrId = tableModel.getValueAt(red, 0).toString();
+					ZanrKnjige z = biblioteka.pronadjiZanr(zanrId);
+					SviZanroviForma zf = new SviZanroviForma(biblioteka, z);
+						zf.setVisible(true);
 				}
 			}
 		});
@@ -127,26 +120,26 @@ public class KnjigeProzor extends JFrame {
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int red = knjigeTabela.getSelectedRow();
+				int red = zanroviTabela.getSelectedRow();
 				if(red == -1) {
 					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
 				}else {
 					
-					int knjigaID = (int) tableModel.getValueAt(red, 0);
-					Knjiga k = biblioteka.pronadjiKnjigu(knjigaID);
+					String zanrId = (String) tableModel.getValueAt(red, 0);
+					ZanrKnjige z = biblioteka.pronadjiZanr(zanrId);
 					
 					int select = JOptionPane.showConfirmDialog(null, 
-							"Da li ste sigurni da zelite da obrisete knjigu?", 
-							knjigaID + " - Porvrda brisanja", JOptionPane.YES_NO_OPTION);
+							"Da li ste sigurni da zelite da obrisete zanr?", 
+							zanrId + " - Porvrda brisanja", JOptionPane.YES_NO_OPTION);
 					if(select == JOptionPane.YES_OPTION) {
-						k.setObrisan(true);
+						z.setObrisan(true);
 						tableModel.removeRow(red);
-						biblioteka.snimiKnjige(BibliotekaMain.KNJIGE_FAJL);
+						biblioteka.snimiZanrove(BibliotekaMain.ZANROVI_FAJL);
 					}
 				}
 			}
 		});
 		
 	}
-
 }
+

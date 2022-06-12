@@ -1,2 +1,4 @@
-1|Petar|Petrovic|11111111111|Mileticeva 5, Indjija|1|petarp|1234|55000|false|0
-2|Marija|Maric|22222222222|Milutina Bojica 15, Novi Sad|0|marijam|4321|65000|false|1
+1|Petar|Petrovic|11111111111|Mileticeva 5, Indjija|1|petarp|1234|55000.0|false|0
+2|Marija|Maric|22222222222|Milutina Bojica 15, Novi Sad|1|marijam|1111|65000.0|true|0
+3|Mira|Petrovic|45871236910|Kralja Petra 13, Indjija|0|mirap|00000|89000.0|true|0
+6|dane|da|da|da|1|da|da|5.0|false|0

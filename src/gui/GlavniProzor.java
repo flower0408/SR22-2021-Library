@@ -16,6 +16,8 @@ import gui.formeZaPrikaz.IzdavanjeProzor;
 import gui.formeZaPrikaz.KnjigeProzor;
 import gui.formeZaPrikaz.PrimerciKnjigaProzor;
 import gui.formeZaPrikaz.SpisakZaposlenihProzor;
+import gui.formeZaPrikaz.SviZanroviProzor;
+import gui.formeZaPrikaz.SviZaposleniProzor;
 import gui.formeZaPrikaz.ZanroviProzor;
 import net.miginfocom.swing.MigLayout;
 import osobe.Zaposleni;
@@ -91,7 +93,7 @@ public class GlavniProzor extends JFrame {
 			sviZaposleniItem.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					SpisakZaposlenihProzor pp = new SpisakZaposlenihProzor(biblioteka);
+					SviZaposleniProzor pp = new SviZaposleniProzor(biblioteka);
 					pp.setVisible(true);
 				}
 			});
@@ -132,7 +134,7 @@ public class GlavniProzor extends JFrame {
 			zanroviKnjigaItem.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ZanroviProzor kp = new ZanroviProzor();
+					SviZanroviProzor kp = new SviZanroviProzor(biblioteka);
 					kp.setVisible(true);
 				}
 			});

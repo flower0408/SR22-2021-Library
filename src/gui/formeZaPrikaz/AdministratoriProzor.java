@@ -103,7 +103,7 @@ public class AdministratoriProzor extends JFrame {
 						String administratorId = tableModel.getValueAt(red, 0).toString();
 						Administrator administrator = biblioteka.pronadjiAdministartora(administratorId);
 						int izbor = JOptionPane.showConfirmDialog(null, 
-								"Da li ste sigurni da zelite da obrisete disk?", 
+								"Da li ste sigurni da zelite da obrisete administartora?", 
 								administratorId + " - Porvrda brisanja", JOptionPane.YES_NO_OPTION);
 						if(izbor == JOptionPane.YES_OPTION) {
 							administrator.setObrisan(true);
